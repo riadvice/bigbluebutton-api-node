@@ -1,6 +1,9 @@
 var BaseResponse = require('./BaseResponse');
 class ApiVersionResponse extends BaseResponse{
-
+    constructor(rawXML)
+    {
+        super(rawXML);
+    }
     getVersion()
     {
         return this.rawXML.response.version._text;

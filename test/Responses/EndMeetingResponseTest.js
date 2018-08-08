@@ -7,7 +7,7 @@ class EndMeetingResponseTest extends TestCase
     constructor()
     {
         super();
-        this.end=new EndMeetingResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/endMeetingData.xml', 'utf8'));
+        this.end=new EndMeetingResponse(fs.readFileSync('./Data/endMeetingData.xml', 'utf8'));
     }
 
     testEndMeetingResponseContent()

@@ -14,7 +14,11 @@ class UrlBuilder {
     }
 
     buildQs(method, params)
-    {   var sha1 = crypto.createHash("sha1").update(method+params+this.securitySalt).digest("hex");
+    {
+       // console.log('-'+method+'//////////////////////////////////////////////////'+params);
+        var sha1 = crypto.createHash("sha1").update(method+params+this.securitySalt).digest("hex");
+       // console.log('-'+sha1);
+       // console.log('*****************');
         return params+'&checksum='+sha1;
 
     }

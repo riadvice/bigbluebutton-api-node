@@ -7,7 +7,7 @@ class PublishRecordingsResponseTest extends TestCase
     constructor()
     {
         super();
-        this.publish=new PublishRecordingsResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/publishRecordingsData.xml', 'utf8'));
+        this.publish=new PublishRecordingsResponse(fs.readFileSync('./Data/publishRecordingsData.xml', 'utf8'));
     }
 
     testPublishRecordingsResponseContent()

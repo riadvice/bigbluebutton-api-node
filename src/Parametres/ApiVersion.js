@@ -16,13 +16,7 @@ class ApiVersionParameteres extends Base {
     getRunning() {
         return this.running;
     }
-    setMe(m){
-        this.me = m;
-        return this;
-    }
-    getMe(){
-        return this.me;
-    }
+
 
 }
 

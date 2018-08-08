@@ -7,7 +7,7 @@ class JoinMeetingResponseTest extends TestCase
     constructor()
     {
         super();
-        this.joinMeeting=new JoinMeetingResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/joinMeetingData.xml', 'utf8'));
+        this.joinMeeting=new JoinMeetingResponse(fs.readFileSync('./Data/joinMeetingData.xml', 'utf8'));
     }
 
    testJoinMeetingResponseContent()

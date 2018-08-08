@@ -7,7 +7,7 @@ class DeleteRecordingsResponseTest extends TestCase
     constructor()
     {
         super();
-        this.delete=new DeleteRecordingsResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/deleteRecordingsData.xml', 'utf8'));
+        this.delete=new DeleteRecordingsResponse(fs.readFileSync('./Data/deleteRecordingsData.xml', 'utf8'));
     }
 
     testDeleteRecordingsResponseContent()

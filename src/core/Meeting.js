@@ -56,9 +56,7 @@ class Meeting{
     {
         return this.moderatorPassword;
     }
-    /**
-     * @return bool
-     */
+
     getHasBeenForciblyEnded()
     {
         return this.hasBeenForciblyEnded;

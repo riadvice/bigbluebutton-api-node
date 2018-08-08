@@ -2,6 +2,7 @@ var Buffer = require('buffer').Buffer;
  var MetaParameters = require('./MetaParameters');
 var XMLWriter = require('xml-writer');
 var Base=require('./BaseParametres');
+const querystring = require('querystring');
 
 class CreateMeetingParameteres extends MetaParameters {
      constructor(meetingId, meetingName) {
@@ -206,12 +207,22 @@ class CreateMeetingParameteres extends MetaParameters {
     }
 
     addPresentation(nameOrUrl, content = null) {
+
         if (content != null) {
             this.presentations[nameOrUrl] = Buffer.from(content).toString('base64');
+        }
+        else{
+            this.presentations[nameOrUrl] = content;
         }
 
 
         return this;
+    }
+    countPresentation()
+    {
+
+        return Object.keys(this.presentations).length;
+
     }
 
     /* ///// */
@@ -221,16 +232,16 @@ class CreateMeetingParameteres extends MetaParameters {
         if (Object.keys(this.presentations).length !== 0) {
            var xml = new XMLWriter();
             xml.startDocument('1.0', 'UTF-8');
-            // xml.endElement('modules');
-            var module = xml.startElement('module').writeAttribute('name', 'presentation');
-
-            // module.writeAttribute('name', 'presentation');
-
+            var module = xml.startElement('modules');
+             module.startElement('module').writeAttribute('name', 'presentation');
             for (const key of Object.keys(this.presentations)) {
-                if (this.presentations[key] === true) {
-                    module.startElement('document').writeAttribute('url', querystring.stringify(key));
-                    xml.endElement();
-                } else {
+
+                if (this.presentations[key]===null) {
+
+                    module.startElement('document').writeAttribute('url', encodeURIComponent(key));
+                     xml.endElement();
+                }
+                else {
                     module.startElement('document').writeAttribute('name', key).text(this.presentations[key]);
                     xml.endElement();
                     // document[0] = this.presentations[key];
@@ -238,23 +249,38 @@ class CreateMeetingParameteres extends MetaParameters {
 
             }
             xml.endElement();
+            xml.endElement();
 
             xml.endDocument();
 
             result = xml.output;
 
+           /****TEST****/
+            var parse = require('xml-js');
+            var response = parse.xml2js(result, {compact: true});
+            if(response.modules.module)
+            {
+                if(response.modules.module._attributes.name==='presentation')
+                {
+                    console.log('+1');
+                }
+            }
 
-            return result;
+
+
+
         }
-    }
 
+        return result;
+    }
 
     getHTTPQuery()
     {
+
     var b = new Base();
     var queries = {
         'name': this.meetingName,
-        'meetingId': this.meetingId,
+        'meetingID': this.meetingId,
         'attendeePW': this.attendeePassword,
         'moderatorPW': this.moderatorPassword,
         'dialNumber': this.dialNumber,
@@ -273,6 +299,7 @@ class CreateMeetingParameteres extends MetaParameters {
         'copyright': this.copyright,
         'muteOnStart': this.muteOnStart,
     };
+
     var meta=super.buildMeta(queries);
 
     return b.buildHTTPQuery(meta);// SUPPEERRR call !!

@@ -7,7 +7,7 @@ class IsMeetingRunningResponseTest extends TestCase
     constructor()
     {
         super();
-        this.running=new IsMeetingRunningResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/isMeetingRunningData.xml', 'utf8'));
+        this.running=new IsMeetingRunningResponse(fs.readFileSync('./Data/isMeetingRunningData.xml', 'utf8'));
     }
 
     testIsMeetingRunningResponseContent()

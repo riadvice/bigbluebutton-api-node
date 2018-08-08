@@ -25,8 +25,13 @@ class MetaParameters extends Base
                 queries['meta_' + key] = this.meta[key];
             }
         }
+
         return queries;
 
+    }
+    hTTPQuery(queries)
+    {
+        return super.buildHTTPQuery(queries);
     }
 }
 module.exports=MetaParameters;

@@ -5,7 +5,7 @@ var assert = require('assert');
 class CreateMeetingResponseTest extends TestCase
 {       constructor() {
     super();
-    this.meeting = new CreateMeetingResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/createMeetingData.xml', 'utf8'));
+    this.meeting = new CreateMeetingResponse(fs.readFileSync('./Data/createMeetingData.xml', 'utf8'));
 }
 
    testCreateMeetingResponseContent()

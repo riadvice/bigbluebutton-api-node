@@ -8,9 +8,10 @@ class GetMeetingInfoResponse  extends BaseResponse{
         super(xml);
         this.meetingInfo= new MeetingInfo(this.rawXML.response);
         this.attendees= [];
+        if(this.rawXML.response.attendees.attendee){
         for (var i=0 ;i<this.rawXML.response.attendees.attendee.length;i++) {
             this.attendees[i] = new Attendee(this.rawXML.response.attendees.attendee[i]);
-        }
+        }}
 
 
 

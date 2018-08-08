@@ -7,7 +7,7 @@ class SetConfigXMLResponseTest extends TestCase
     constructor()
     {
         super();
-        this.config=new SetConfigXMLResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/setConfigXmlData.xml', 'utf8'));
+        this.config=new SetConfigXMLResponse(fs.readFileSync('./Data/setConfigXmlData.xml', 'utf8'));
     }
 
     testSetConfigXMLResponseContent()

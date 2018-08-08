@@ -4,10 +4,11 @@ class GetRecordingssResponse extends BaseResponse {
     constructor(xml) {
         super(xml);
         this.records = [];
-        for (var i=0 ;i<this.rawXML.response.recordings.recording.length;i++) {
-            this.records[i] = new Record(this.rawXML.response.recordings.recording[i]);
+        if(this.rawXML.response.recordings.recording) {
+            for (var i = 0; i < this.rawXML.response.recordings.recording.length; i++) {
+                this.records[i] = new Record(this.rawXML.response.recordings.recording[i]);
+            }
         }
-
     }
 
 

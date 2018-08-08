@@ -1,4 +1,5 @@
 var parser = require('../parser');
+var parse = require('xml-js');
 class BaseResponse{
     constructor(rawXML)
     {
@@ -7,7 +8,7 @@ class BaseResponse{
     }
     getRawXML()
     {
-        return this.rawXML;
+        return parse.json2xml(this.rawXML, {compact: true});;
     }
 
     getReturnCode()

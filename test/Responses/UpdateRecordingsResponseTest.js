@@ -7,7 +7,7 @@ class UpdateRecordingsResponseTest extends TestCase
     constructor()
     {
         super();
-        this.update=new UpdateRecordingsResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/updateRecordingsData.xml', 'utf8'));
+        this.update=new UpdateRecordingsResponse(fs.readFileSync('./updateRecordingsData.xml', 'utf8'));
     }
    testUpdateUpRecordingsResponseContent()
 {

@@ -36,9 +36,10 @@ class getRecordingsParameteres extends MetaParameters{
             'recordID': this.recordId,
             'state': this.state
         };
+        super.buildMeta(queries);
 
 
-        return super.buildMeta(queries);
+        return super.hTTPQuery(queries);
     }
     // constructor(ReturnCode, recordID, meetingID, name, published, state, startTime, endTime, type, url, length) {
     //     super();

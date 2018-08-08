@@ -16,19 +16,11 @@ class TestCase
         this.faker = Faker;
     }
 
-
-    createRealMeeting(bbb)
-{
-    var createMeetingParams = this.generateCreateParams();
-    var createMeetingMock   = this.getCreateMock(createMeetingParams);
-    return bbb.createMeeting(createMeetingMock);
-}
-
     generateCreateParams()
 {
     return {
         "meetingName": this.faker.name.firstName(),
-        "meetingId": this.faker.random.uuid(),
+        "meetingID": this.faker.random.uuid(),
         "attendeePassword": this.faker.internet.password(),
         "moderatorPassword": this.faker.internet.password(),
         "autoStartRecording": this.faker.random.boolean(),
@@ -52,7 +44,7 @@ class TestCase
 
     getCreateMock(params)
 {
-    var createMeetingParams = new CreateMeetingParameters(params.meetingId, params.meetingName);
+    var createMeetingParams = new CreateMeetingParameters(params.meetingID, params.meetingName);
     createMeetingParams.setAttendeePassword(params.attendeePassword);
     createMeetingParams.setModeratorPassword(params.moderatorPassword);
     createMeetingParams.setDialNumber(params.dialNumber);
@@ -71,17 +63,22 @@ class TestCase
     createMeetingParams.setCopyright(params.copyright);
     createMeetingParams.setMuteOnStart(params.muteOnStart);
     createMeetingParams.addMeta('presenter', params.meta_presenter);
+   // console.log(createMeetingParams);
     return createMeetingParams;
 }
 
    generateJoinMeetingParams()
 {
-    return {'meetingId'    : this.faker.random.uuid(),
+    const crypto = require('crypto');
+
+    var current_date = (new Date()).valueOf().toString();
+    var random = Math.random().toString();
+    return {'meetingID'    : this.faker.random.uuid(),
     'userName'     : this.faker.name.firstName(),
     'password'     : this.faker.internet.password(),
     'userId'       : this.faker.random.number(1, 1000),
     'webVoiceConf' : this.faker.random.word(),
-    'creationTime' : this.faker.date.soon
+    'creationTime' :  crypto.createHash('sha1').update(current_date + random).digest('hex') //sha1
 };
 }
 
@@ -96,12 +93,12 @@ class TestCase
 }
    generateEndMeetingParams()
 {
-    return {'meetingId' : this.faker.random.uuid(),
+    return {'meetingID' : this.faker.random.uuid(),
     'password'  : this.faker.internet.password()};
 }
 getEndMeetingMock(params)
 {
-    return new EndMeetingParameters(params.meetingId, params.password);
+    return new EndMeetingParameters(params.meetingID, params.password);
 }
     updateRecordings(bbb)
 {
@@ -125,7 +122,7 @@ getEndMeetingMock(params)
    generateSetConfigXMLParams()
 {
     return {
-        'meetingId' : this.faker.random.uuid()
+        'meetingID' : this.faker.random.uuid()
 };
 }
     getSetConfigXMLMock(params)

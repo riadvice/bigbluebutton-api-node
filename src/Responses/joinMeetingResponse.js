@@ -1,6 +1,10 @@
 var BaseResponse = require('./BaseResponse');
 
 class JoinMeetingResponse extends BaseResponse {
+    constructor(rawXML)
+    {
+        super(rawXML);
+    }
     getMeetingId() {
         return this.rawXML.response.meeting_id._text ;
     }

@@ -7,7 +7,7 @@ class GetDefaultConfigXMLResponseTest extends TestCase
     constructor()
     {
         super();
-        this.version=new GetDefaultConfigXMLResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/defaultConfigXmlData.xml', 'utf8'));
+        this.version=new GetDefaultConfigXMLResponse(fs.readFileSync('./Data/defaultConfigXmlData.xml', 'utf8'));
     }
 
     testEndMeetingResponseContent()

@@ -9,7 +9,7 @@ class ApiVersionResponseTest extends TestCase
     {
         super();
 
-        this.version=new ApiVersionResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/versionData.xml', 'utf8'));
+        this.version=new ApiVersionResponse(fs.readFileSync('./Data/versionData.xml', 'utf8'));
     }
 
     testApiVersionResponseContent()

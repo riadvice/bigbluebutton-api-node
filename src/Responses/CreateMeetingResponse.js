@@ -52,6 +52,7 @@ class CreateMeetingResponse extends BaseResponse{
 
 
 
+
 }
 // var a = new CreateMeetingResponse('../data/createMeetingData.xml');
 // console.log(a.getMessage());

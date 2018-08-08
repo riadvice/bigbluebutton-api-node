@@ -7,7 +7,7 @@ class GetMeetingsResponseTest extends TestCase
     constructor()
     {
         super();
-        this.meetings=new GetMeetingsResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/getMeetingsData.xml', 'utf8'));
+        this.meetings=new GetMeetingsResponse(fs.readFileSync('./Data/getMeetingsData.xml', 'utf8'));
     }
 
    testGetMeetingsResponseContent()

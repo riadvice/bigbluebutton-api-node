@@ -29,7 +29,7 @@ class getInfoMeetingParameteres extends Base{
     {
         return super.buildHTTPQuery(
             {   'meetingID' : this.meetingId,
-                'password'  :this.password,});
+                'password'  :this.password});
     }
 
     // constructor(ReturnCode, meetingName, meetingID, internalMeetingID, createTime, createDate, voiceBridge, dialNumber, attendeePW, moderatorPW, running, duration, hasUserJoined, recording, hasBeenForciblyEnded, startTime, endTime, participantCount, listenerCount, voiceParticipantCount, videoCount, maxUsers, moderatorCount)

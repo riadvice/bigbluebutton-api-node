@@ -7,7 +7,7 @@ class GetRecordingsResponseTest extends TestCase
     constructor()
     {
         super();
-        this.records=new GetRecordingsResponse(fs.readFileSync('D:/workspace/bigbluebutton-api-node/tests/Data/getRecordingsData.xml', 'utf8'));
+        this.records=new GetRecordingsResponse(fs.readFileSync('./Data/getRecordingsData.xml', 'utf8'));
     }
 
    testGetRecordingResponseContent()

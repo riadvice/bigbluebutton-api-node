@@ -15,7 +15,7 @@ class updateRecordingsParameteres extends MetaParameters{
     }
     getHTTPQuery()
     {
-        queries = {
+       var queries = {
             'recordID' : this.recordingId
     };
         super.buildMeta(queries);
