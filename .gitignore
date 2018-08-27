@@ -189,3 +189,5 @@ package-lock.json
 package.json
 src/Parametres/yes.js
 src/parser.js
+/package.json
+/package-lock.json
